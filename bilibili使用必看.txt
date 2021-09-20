@@ -1,0 +1,59 @@
+注意：
+	1.chrome要有
+	2.采集弹幕数据mirmproxy要有
+	3.自动下载视频 哔哩哔哩插件要有
+
+
+使用到的的第三方库：requests
+				  time
+				  selenium
+				  pandas
+				  multiprocessing
+				  lxml
+				  os
+				  mitmproxy
+
+
+
+UP_Homepage：获取UP视频主页的数据
+			 运行文件
+			 请输入UPmid：
+			 			mid是UP主主页视频链接的一部分
+			 			例如：https://space.bilibili.com/1532165/video
+			 			其中改UP主的mid为 1532165
+			 请输入起始页数：
+			 			建议先访问UP主的全部视频页数
+			 			起始页数表示从第几页开始采集
+			 请输入结束页数：
+			 			结束页数表示到第几页结束采集
+			 采集完成会生成UP_Homepage.csv，其中数据 oids列、page列对采集评论数据有用
+			 UP主主页数据的采集关系到评论数据的采集
+
+
+
+UP_Comments：获取UP主视频中的评论数据
+			运行文件
+			读取上步骤UP_Homepage.csv中oids列、page列拼接url==》评论数据包接口
+			采集中会成一个UP_Comments.csv 为采集全部的评论数据
+			采集中会生成一个UP_Comments文件夹 其中包含多个csv每个csv代表UP主每个视频的评论数据，相当于将全部的评论数据按照视频分开
+
+
+
+UP_DM：获取弹幕UP主视频弹幕数据
+	   运行文件
+	   输入UP主mid、起始页数、结束页数
+	   CMD进入当前文件夹 通过 mitmdump -s DM_Cid-9000.py -p 9000开启抓包
+	   当打印mitmdump抓包已经结束即可关闭
+	   采集中会生成一个全部文件和一个文件夹中包含多个文件和评论数据生成类似
+
+
+
+UP_Video：自动下载UP主视频
+		  确保自己有chrome浏览器，确保将哔哩哔哩助手插件安装成功
+		  运行文件
+		  输入mid、页数
+		  会自动下载视频，视频下载到自己chrome设置的地址
+
+
+如果觉得不错可以关注我的CSDN：https://blog.csdn.net/weixin_47163937?spm=1000.2115.3001.5343
+更多爬虫项目等你来
